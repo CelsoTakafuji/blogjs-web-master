@@ -1,0 +1,21 @@
+<form method="POST" enctype="multipart/form-data">
+  <fieldset class="form-group" name="avatar">
+    <label for="avatar">Selecione uma imagem para seu avatar</label>
+    <input class="btn btn-primary" type="file" id="avatar" ng-model="usuario.avatar" name="avatar" style="width:400px;"/>
+  </fieldset>
+  <fieldset class="form-group" name="nome">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" ng-model="usuario.nome" style="width:400px;">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="login">Login</label>
+    <input type="text" class="form-control" id="login" ng-model="usuario.login" style="width:400px;">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" id="senha" ng-model="usuario.senha" style="width:400px;">
+  </fieldset>
+  <button class="btn btn-lg btn-primary" ng-click="cadastrar(usuario)">
+    Cadastrar
+  </buton>
+</form>

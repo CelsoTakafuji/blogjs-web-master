@@ -1,0 +1,49 @@
+<div class="panel panel-primary" ng-init="init()">
+  <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-4">
+              <label for="filtro">Quais tipos de post estou procurando...</label>
+              <input id="filtro" class="form-control"
+                ng-model="filtro"
+                ng-model-options='{ debounce: 500 }'
+                ng-change="atualizarPosts();">
+          </div>
+      </div>
+  </div>
+  <div class="panel-body">
+    <div ng-repeat="post in posts|orderBy:'dataPostagem':true">
+      <div class="row post-item">
+        <a ng-href="#/posts/{{post._id}}">
+          <div class="col-sm-2">
+            {{post.donoNome}}
+          </div>
+          <div class="col-sm-6">
+            {{post.titulo}}
+          </div>
+          <div class="col-sm-4">
+            {{post.dataPostagem | date:'dd/MM/yyyy HH:mm:ss'}}
+          </div>
+        </a>
+        </div>
+    </div>
+  </div>
+  <div class="panel-body">
+      <nav>
+          <ul class="pagination">
+            <li>
+              <a ng-click="carregaPagina(paginaAtual-1)" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li ng-repeat="p in montarPaginas(totalPaginas) track by $index" ng-class="{active: $index+1==paginaAtual}">
+                <a ng-click="carregaPagina($index+1)">{{$index+1}}</a>
+            </li>
+            <li>
+              <a ng-click="carregaPagina(paginaAtual+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+  </div>
+</div>

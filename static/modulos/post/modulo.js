@@ -1,0 +1,45 @@
+var dependencias = ['textAngular', 'ngSanitize'];
+angular
+    .module('blogjs.post', dependencias)
+    .config(function($routeProvider, $locationProvider){
+
+  $routeProvider
+
+    .when('/posts', {
+        controller: 'PesquisaPostController',
+        templateUrl: 'modulos/post/pesquisa/view.html'
+    })
+
+    .when('/usuarios/:id/posts', {
+      controller: 'PesquisaUsuarioPostController',
+      templateUrl: 'modulos/post/pesquisa_usuario/view.html'
+    })
+
+    .when('/usuarios/:id/posts/novo', {
+      controller: 'RegistroPostController',
+      templateUrl: 'modulos/post/cadastro/view.html'
+    })
+
+    .when('/usuarios/:id/posts/:postId', {
+      controller: 'VisualizacaoUsuarioPostController',
+      templateUrl: 'modulos/post/visualizacao_usuario/view.html'
+    })
+
+    .when('/posts/:postId', {
+      controller: 'VisualizacaoPostController',
+      templateUrl: 'modulos/post/visualizacao/view.html'
+    })
+
+    .when('/', {
+      controller: 'HomeController',
+      templateUrl: 'home.html'
+    })
+
+    .otherwise({
+        //redirectTo: '/posts'
+        redirectTo: '/'
+    });
+
+    $locationProvider.hashPrefix('');
+
+});

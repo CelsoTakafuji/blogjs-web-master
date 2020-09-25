@@ -1,0 +1,53 @@
+
+<div class="panel" ng-init="init()" style="padding-left:20px;">
+  <h1>Meus dados</h1>
+
+  <br/>
+
+    <div ng-if='!usuario.avatar || usuario.avatar == "" '>
+        <fieldset class="form-group">
+          <img ng-src="uploads/sem-imagem-avatar.jpg" alt="Sem avatar" height="120" width="120" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="avatar">Inclua um avatar</label>
+          <input class="btn btn-primary" type="file" id="avatar" name="avatar" style="width:400px;"/>
+        </fieldset>
+    </div>
+    <div ng-if='usuario.avatar && usuario.avatar != "" '>
+        <fieldset class="form-group">
+          <img ng-src="{{usuario.avatar}}" alt="Seu avatar" height="120" width="120" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="avatar">Selecione uma imagem para alterar seu avatar</label>
+          <input class="btn btn-primary" type="file" id="avatar" name="avatar" style="width:400px;"/>
+        </fieldset>
+    </div>
+    <fieldset class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" id="nome" ng-model="usuario.nome" style="width:400px;">
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="login">Login</label>
+      <input type="text" class="form-control" id="login" ng-model="usuario.login" style="width:400px;">
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="senha">Senha Nova</label>
+      <label style="color:red;">(Obs.: Só preencha se for alterar!)</label>
+      <input type="password" class="form-control" id="senhaNova" ng-model="usuario.senhaNova" style="width:400px;">
+    </fieldset>
+
+    <div class="panel-footer">
+      <table width="400px;"
+        <tr>
+          <td valign="top" width="50%">
+              <form>
+                  <button class="btn btn-primary" ng-click="remover()" style="width:160px; height:50px; background-color:red;">Remover Cadastro</button>
+              </form>
+          </td>
+          <td valign="top" width="50%">
+              <button class="btn btn-primary" ng-click="salvar(usuario)" style="width:160px; height:50px;">Salvar</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+</div>

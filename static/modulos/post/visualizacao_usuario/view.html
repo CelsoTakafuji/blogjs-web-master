@@ -1,0 +1,68 @@
+<div class="panel panel-primary" ng-init="init()">
+  <div class="panel-heading">
+      <div>
+          <div ng-bind="post.titulo" ng-hide="estaSendoEditado"></div>
+          <input class="form-control" ng-model="postEditado.titulo" ng-show="estaSendoEditado"></div>
+      </div>
+  </div>
+  <div class="panel-body">
+    <div>
+        <div ng-bind-html="post.conteudo" ng-hide="estaSendoEditado"></div>
+        <div text-angular ng-model="postEditado.conteudo" ng-show="estaSendoEditado"></div>
+
+        <div class="comentarios">
+            <div class="row" ng-repeat="com in post.comentarios track by $index">
+                <div>
+                    <b>{{com.usuario}}</b> comentou em <b>{{com.dataComentario | date: 'dd/MM/yyyy HH:mm:ss'}}:</b>
+                </div>
+                <div ng-hide="estaSendoEditado">
+                    <br/>
+                    {{com.conteudo}}
+                </div>
+                <div ng-show="estaSendoEditado">
+                  <div>
+                      <br/>
+                      <label for="comentario">Seu comentário:</label>
+                      <textarea id="comentario" ng-model="com.conteudo" class="form-control">{{com.conteudo}}</textarea>
+                  </div>
+                </div>
+                <div ng-show="estaSendoEditado">
+                    <br/>
+                    <button class="btn btn-primary" ng-click="removerComentario(post._id, com._id)" style="background-color:red;">Remover comentário</button>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-primary" ng-click="alterarComentario(post._id, com._id, com)">Alterar comentário</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div ng-bind="post.dataPostagem | date:'dd/MM/yyyy HH:mm:ss'"></div>
+  </div>
+  <div class="panel-footer">
+    <table width="600px;">
+      <tr>
+        <td valign="top" width="25%">
+            <a ng-href="#usuarios/{{post.dono}}/posts" class="btn btn-default" style="width:130px; height:50px; background-color:#777; color:white; display:table-cell; vertical-align:middle; text-align:center;">
+              Ver outros posts
+            </a>
+        </td>
+        <td valign="top" ng-hide="estaSendoEditado" width="25%">
+            <button class="btn btn-primary" ng-hide="estaSendoEditado" ng-click="habilitarEdicao()" style="width:130px; height:50px;">Editar</button>
+        </td>
+        <td valign="top" width="25%">
+            <button class="btn btn-info" ng-show="estaSendoEditado" ng-click="cancelarEdicao()" style="width:130px; height:50px; ">Cancelar Edição</button>
+        </td>
+        <td valign="top" width="25%">
+            <form ng-show="estaSendoEditado">
+                <button class="btn btn-primary" ng-show="estaSendoEditado" ng-click="removerPost()" style="width:130px; height:50px; background-color:red;">Remover</button>
+            </form>
+        </td>
+        <td valign="top" width="25%">
+            <button class="btn btn-primary" ng-show="estaSendoEditado" ng-click="salvarEdicao(postEditado)" style="width:130px; height:50px;">Salvar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

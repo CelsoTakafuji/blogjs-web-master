@@ -1,0 +1,21 @@
+div.post-item{
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+div.post-item:HOVER {
+  cursor: pointer;
+  background-color: #F4F9F9;
+}
+
+.comentarios {
+    padding: 10px;
+}
+
+.comentarios > .row{
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #CACACA;
+}

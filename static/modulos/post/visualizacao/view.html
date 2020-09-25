@@ -1,0 +1,65 @@
+<div class="panel panel-primary" ng-init="init()">
+  <div class="panel-heading" ng-bind="post.titulo"></div>
+  <div class="panel-body">
+    <div ng-bind-html="post.conteudo"></div>
+  </div>
+  <div class="panel-footer">
+      <div class="comentarios">
+          <div class="row" ng-repeat="com in post.comentarios track by $index">
+              <div>
+                  <b>{{com.usuario}}</b> comentou em <b>{{com.dataComentario | date: 'dd/MM/yyyy HH:mm:ss'}}:</b>
+              </div>
+              <div ng-if="usuarioLogado._id != post.dono">
+                  <br/>
+                  {{com.conteudo}}
+              </div>
+              <div ng-if="usuarioLogado._id == post.dono">
+                  <div>
+                      <br/>
+                      <label for="comentario">Seu comentário:</label>
+                      <textarea id="comentario" ng-model="com.conteudo" class="form-control">{{com.conteudo}}</textarea>
+                  </div>
+                  <div>
+                      <br/>
+                      <button class="btn btn-primary" ng-click="removerComentario(post._id, com._id)" style="background-color:red;">Remover comentário</button>
+                      &nbsp;&nbsp;
+                      <button class="btn btn-primary" ng-click="alterarComentario(post._id, com._id, com)">Alterar comentário</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div>
+            <label for="email">Seu email:</label>
+            <input id="email" ng-model="comentario.email" class="form-control"></input>
+        </div>
+        <div>
+            <label for="comentario">Seu comentário:</label>
+            <textarea id="comentario" ng-model="comentario.conteudo" class="form-control"></textarea>
+        </div>
+        <div>
+          <table width="250px;">
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <button ng-click="comentar(comentario)" class="btn btn-primary">Comentar</button> &nbsp;&nbsp;
+              </td>
+              <td>
+                <a ng-href="#/posts" class="btn btn-default" style="background-color:#777; color:white;">
+                  Ver outros posts
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+</div>

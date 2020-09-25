@@ -1,0 +1,42 @@
+<div ng-init="init()">
+
+  <h1>Bem vindo ao Blog do Napa!</h1>
+
+  <div><!--Cotidiano, Mundo, Economia, Tecnologia, Política, Esportes, Cultura, Gastronomia, Saúde, -->Programação, Filmes, Games, HQ's, Livros, Animes, Mangás e muito mais.</div>
+
+  <br/>
+
+  <div>
+    Este blog será atualizado constantemente por Napapapão. Caso necessite entrar em contato:
+    <a href="mailto:napapapao@gmail.com">napapapao@gmail.com</a>
+  </div>
+
+  <br/>
+
+  <div>
+    <img ng-src="uploads/blog/games.jpg" alt="Games" height="180" width="240" />
+    <img ng-src="uploads/blog/animes.jpg" alt="Animes" height="180" width="240" />
+    <img ng-src="uploads/blog/hq.jpg" alt="HQ's" height="180" width="240" />
+    <img ng-src="uploads/blog/programacao.jpg" alt="Programação" height="180" width="240" />
+  </div>
+
+  <br/>
+
+  <h2>Últimos posts</h2>
+
+  <div class="panel-body">
+    <div ng-repeat="post in posts|orderBy:'dataPostagem':true|limitTo:5">
+      <div class="row post-item">
+        <a ng-href="#/posts/{{post._id}}">
+          <div class="col-sm-8">
+            {{post.titulo}}
+          </div>
+          <div class="col-sm-4">
+            {{post.dataPostagem | date:'dd/MM/yyyy HH:mm:ss'}}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>

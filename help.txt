@@ -1,0 +1,19 @@
+===Hospedagem===
+
+Hospedado no heroku: https://blognapa.herokuapp.com
+
+===Banco de dados===
+
+https://mlab.com
+Usuário: cmassao 
+Senha: nirvana666
+Nome da base: blogjs
+
+Logar no bash
+mongo ds161121.mlab.com:61121/blogjs -u cmassao -p nirvana666
+
+Import collection json
+mongoimport -h ds161121.mlab.com:61121 -d blogjs -c posts -u cmassao -p nirvana666 --file <input file>
+
+Export collection json
+mongoexport -h ds161121.mlab.com:61121 -d blogjs -c posts -u cmassao -p nirvana666 -o posts.json
